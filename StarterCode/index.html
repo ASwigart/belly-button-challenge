@@ -21,13 +21,6 @@
     <div class="row">
       <div class="col-md-2">
         <div class="well">
-          <!-- https://www.w3schools.com/howto/howto_js_dropdown.asp -->
-          <div class="dropdown">
-            <button onclick="function()" class ="dropbtn">Dropdown</button>
-            <div id="iddropdown" class="dropdown-content">
-             
-            </div>
-          </div>
           <h5>Test Subject ID No.:</h5>
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
@@ -41,6 +34,7 @@
       <div class="col-md-5">
         <div id="bar"></div>
       </div>
+
       <div class="col-md-5">
         <div id="gauge"></div>
       </div>
@@ -51,12 +45,13 @@
       </div>
     </div>
   </div>
+  </div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="./app.js"></script>
   <!-- <script src="./js/bonus.js"></script> -->
-  
+
 </body>
 
 </html>
