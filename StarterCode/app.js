@@ -64,22 +64,12 @@ function optionChanged(subId){
 }
 
 
-// infoBox.append("p").text 
-
-//         subId.forEach((sample) => {
-//             dropDown.append("option"). text(sample).property("value", sample)
-//         });
-//         var initSample = subId[0];
-//         buildMeta(initSample);
-//     // buildCharts(initSample);
-//     });
-
 function BuildCharts(subId) {
-d3.json(bellyurl). then((data) => {
-    let subIdmetadata = data.samples 
-    var resultArray = subIdmetadata.filter(sampleObj => sampleObj.id == subId);
-var result = resultArray[0];
-    }
+    d3.json(bellyurl). then((data) => {
+        let subIdmetadata = data.samples 
+        var resultArray = subIdmetadata.filter(sampleObj => sampleObj.id == subId);
+    var result = resultArray[0];
+    });
 }
 
 
