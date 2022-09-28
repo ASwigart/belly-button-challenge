@@ -21,9 +21,7 @@ var data;
 //     console.log('samples[0]["sample_values"] first 10?', data['samples'][0]["sample_values"].slice(0,10));
 // })
 
-// function buildcharts(subId) data.samples  
-
-
+ 
 function buildMeta() {
     let infoBox = d3.select("#selDataset");
 
@@ -57,13 +55,15 @@ function buildMetadata(subId){
           });
     });
 }
-
+// Function to fetch new data each time a new sample is elected (edited)
 function optionChanged(subId){
     buildMetadata(subId);
     buildCharts(subId);
 }
 
+buildMetadata()
 
+// function buildcharts(subId) data.samples 
 function BuildCharts(subId) {
     d3.json(bellyurl). then((data) => {
         let subIdmetadata = data.samples 
@@ -73,87 +73,11 @@ function BuildCharts(subId) {
 }
 
 
-//  1. Function to collect your metadata (load the data and pull out metadata)
-//  a. Use metadata to update your panel with info
-// 1. Around 7 lines of code
-// https://stackoverflow.com/questions/18238173/javascript-loop-through-json-array
-// JSON.parse(data);
-// data["samples"];
-
-// for (var data in JSON) {
-//     if(JSON.hasOwnProperty(data)) {
-//         let obj = json[i];
-//         console.log(obj.id);
-//      }
-//     }
-
-
-// async function populate(){
-//     const request = new Request(url);
-
-//     const response = await fetch(request);
-//     const data = await response.text();
-    
-//     const sampleValues = JSON.parse(data);
-//     ("data", data);
-//     ("names", data["names"]);
-//     ("metadata", data["metadata"]);
-//     ("samples", data["samples"])
-//     ("metadata[0]", data['metadata'][0]);
-//     ("samples[0]", data['samples'][0]);
-//     ('samples[0]["otu_ids"]', data['samples'][0]["otu_ids"]);
-//     ('samples[0]["otu_labels"]', data['samples'][0]["otu_labels"]);
-//     ('samples[0]["sample_values"]', data['samples'][0]["sample_values"]);
-//     ('samples[0]["sample_values"] first 10?', data['samples'][0]["sample_values"].slice(0,10));
-// }
-  
-
-
-
-
-// let samples = JSON.parse(text, String, key, String, encoding: "utf8", value: any) === ",";
-
-// let json = [{
-//     "data": data,
-//     "names": data.names,
-//     "metadata": metadata,
-//     "samples": samples,
-//     "metadata[0]": demoMetadata,
-//     "samples[0]": samplesID,
-//     "samples[0]": otu_ids, data['samples'][0]["otu_ids"],
-//     "samples[0]["otu_labels"]": data['samples'][0]["otu_labels"],
-//     "samples[0]["sample_values"]": data['samples'][0]["sample_values"],
-//     "samples[0]["sample_values"]": data['samples'][0]["sample_values"]
-// }];
-
-
-
-
-
-
-
-
 
 // 3. Function init() for the dropdown
  // Create dropdownMenu Init() function
 //  3. About 6 lines or so
- function getData(){
- 
-    let dropdownMenu = d3.select("names");
-    let dataset = dropdownMenu.property("names");
-    let data = [];
-     if (dataset == "names") {data = names;}
 
-     function getData() {
-        let dropDownmenu = d3.select("selDataSet");
-        let dataset = dropDownmenu.property("names");
-        console.log(dataset);
-        let nData= Oject.values(data[dataset]);
-        let layout = {
-            title: '${dataset}'
-        };
-    }
-}
 // Call function to update the chart
     // updatePlotly(data);
 
@@ -222,7 +146,7 @@ function BuildCharts(subId) {
 
 
 
-// 4. Function to fetch new data each time a new sample is elected (edited)
+// 4. 
 // 4. about 2 
 // deploy on github pages 
 //
