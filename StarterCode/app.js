@@ -8,7 +8,7 @@ var data;
 
 // JSON read in from Eli 
 // var url = "samples.json";
-// d3.json(url). then( data => {
+// d3.json(bellyurl). then( data => {
 //     console.log("data", data);
 //     console.log("names", data["names"]);
 //     console.log("metadata", data["metadata"]);
@@ -64,89 +64,49 @@ function optionChanged(subId){
 buildMetadata()
 
 // function buildcharts(subId) data.samples 
-function BuildCharts(subId) {
+// Create horizontal bar chart using sample_values and otu_ids and otu_labels
+function buildCharts(subId) {
     d3.json(bellyurl). then((data) => {
         let subIdmetadata = data.samples 
-        var resultArray = subIdmetadata.filter(sampleObj => sampleObj.id == subId);
-    var result = resultArray[0];
+        var resultArray = subIdmetadata.filter(sample_value => sample_value.id == subId);
+        var result = resultArray[0];
+
+
+    var data = [
+        {
+            x: result.sample_values.slice(0,10).reverse(),
+            y: result.otu_ids.slice(0,10).map(Id => `OTU ${Id}`).reverse(),
+            type: 'bar',
+            orientation: 'h'
+        } 
+    ];
+    var layout = {
+        title: 'Top 10 Sample Values',
+        height: 600,
+        width: 600,
+    }
+    Plotly.newPlot("bar", data, layout);
+    
+    var data = [
+        {
+            y: result.sample_values,
+            x: result.otu_ids,
+            mode: 'markers',
+            marker: {
+                size: result.sample_values,
+                color: result.otu_ids,
+                colorscale: 'Greens',
+            }
+            
+        } 
+    ];
+    var layout = {
+        title: 'Sample Values',
+    }
+    Plotly.newPlot("bubble", data, layout, {responsive: true});
     });
 }
 
 
 
-// 3. Function init() for the dropdown
- // Create dropdownMenu Init() function
-//  3. About 6 lines or so
-
-// Call function to update the chart
-    // updatePlotly(data);
-
-// 22222222. Function to create your charts from sample data (load the data and pull out samples)
-//  6 lines just to setup variables for your charts...
-// Create horizontal bar chart using sample_values and otu_ids and otu_labels
-// https://plotly.com/javascript/horizontal-bar-charts/
-// function init(){
-//     let trace1 = {
-//         x: data['sample_values'],
-//         y: data['otu_ids'],
-//         type: 'bar'
-//     };
-//     let layout = {
-//         title: 'Sample Values',
-//         height: 600,
-//         width: 600,
-//     };
-
-//     let data =[trace1];
-//     Plotly.newPlot ("bar", data, layout);
-// }
-// init();
-
-// Plotly.restyle("bar","values");
       
-
-
-// hovertext 
-
-
-
-
-
-// BBBBBBBBUBBLE 
-// Create bubble chart displaying otu_ids for x and sample_values as y 
-// https://plotly.com/javascript/bubble-charts/
-// https://d3-graph-gallery.com/graph/bubble_basic.html
-
-// var trace2 = {
-//     x: data['otu_ids'],
-//     y: data['sample_values'],
-//     mode: 'markers'
-//     marker: {
-//         size: {
-//             width: 20,
-//             height: 20
-//         }
-//     };
-
-// var otuz = [trace2];
-
-// var layout = {
-//     title: 'OTU ID',
-//     showlegend: true,
-//     height: 600,
-//     width: 600,
-//     xaxis: "OTU_ID"};
-
-// Plotly.newPlot ("bubble", otuz, layout);
-
-
-
-
-
-
-
-
-// 4. 
-// 4. about 2 
-// deploy on github pages 
-//
